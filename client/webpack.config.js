@@ -30,7 +30,8 @@ const config = {
       path.resolve(SRC_PATH, './index.jsx'),
     ],
   },
-  mode: 'none',
+  // Use `NODE_ENV` environment variable for mode
+  // mode: 'none',
   module: {
     rules: [
       {
@@ -63,6 +64,7 @@ const config = {
       BUILD_DATE: new Date().toISOString(),
       // Heroku では SOURCE_VERSION 環境変数から commit hash を参照できます
       COMMIT_HASH: process.env.SOURCE_VERSION || '',
+      // NODE_ENV 環境変数が設定されていなければ 'development' とする
       NODE_ENV: 'development',
     }),
     new MiniCssExtractPlugin({
