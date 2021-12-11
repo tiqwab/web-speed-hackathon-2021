@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -76,6 +77,9 @@ const config = {
       template: path.resolve(SRC_PATH, './index.html'),
     }),
     new BundleAnalyzerPlugin(),
+    new MomentLocalesPlugin({
+      localesToKeep: ['ja'],
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
