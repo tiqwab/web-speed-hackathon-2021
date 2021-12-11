@@ -66,7 +66,7 @@ const SoundPlayer = ({ sound }) => {
           <AspectRatioBox aspectHeight={1} aspectWidth={10}>
             <div className="relative w-full h-full">
               <div className="absolute inset-0 w-full h-full">
-                <SoundWaveSVG soundData={data} />
+                <SoundWaveSVG soundId={sound.id} />
               </div>
               <div
                 className="absolute inset-0 w-full h-full bg-gray-300 opacity-75"
