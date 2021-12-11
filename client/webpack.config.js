@@ -11,6 +11,8 @@ const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
+const BUNDLE_ANALYZE = !!process.env.BUNDLE_ANALYZE;
+
 /** @type {import('webpack').Configuration} */
 const config = {
   devServer: {
@@ -76,7 +78,6 @@ const config = {
       inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
-    new BundleAnalyzerPlugin(),
     new MomentLocalesPlugin({
       localesToKeep: ['ja'],
     })
@@ -89,5 +90,9 @@ const config = {
     },
   },
 };
+
+if (BUNDLE_ANALYZE) {
+    config.plugins.push(new BundleAnalyzerPlugin());
+}
 
 module.exports = config;
