@@ -30,7 +30,8 @@ const InfiniteScroll = ({ children, fetchMore, items }) => {
     };
 
     // 最初は実行されないので手動で呼び出す
-    prevReachedRef.current = false;
+    // Is this necessary?
+    // prevReachedRef.current = false;
     handler();
 
     document.addEventListener('wheel', handler, { passive: false });
